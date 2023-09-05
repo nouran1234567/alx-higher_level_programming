@@ -12,18 +12,32 @@
 
 int check_cycle(listint_t *list)
 {
-	listint_t *pointer_slow = list;
-	listint_t *pointer_fast = list;
+	listint_t *p_fast = list;
+	listint_t *p_slow = list;
 
-	if (!list)
-		return (0);
-
-	while (pointer_slow && pointer_fast && pointer_fast->next)
+	while (list && p_fast && p_fast->next)
 	{
-		pointer_slow = pointer_slow->next;
-		pointer_fast = pointer_fast->next->next;
-		if (pointer_slow == pointer_fast)
+		list = list->next;
+		p_fast = p_fast->next->next;
+
+		if (list == p_fast)
+		{
+			list = p_slow;
+			p_slow =  p_fast;
+			while (1)
+			{
+				p_fast = p_slow;
+				while (p_fast->next != list && p_fast->next != p_slow)
+				{
+					p_fast = p_fast->next;
+				}
+				if (p_fast->next == list)
+					break;
+
+				list = list->next;
+			}
 			return (1);
+		}
 	}
 
 	return (0);
