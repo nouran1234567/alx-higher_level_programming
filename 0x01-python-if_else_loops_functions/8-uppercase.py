@@ -4,9 +4,11 @@ def islower(c):
         return True
     else:
         return False
+
+
 def uppercase(str):
     for c in str:
-        if islower(c): 
+        if islower(c):
             print("{:c}".format(ord(c)+32))
         else
-            print ("")
+            print("")
