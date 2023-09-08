@@ -2,7 +2,7 @@
 if __name__ == "__main__":
     from add_0 import add
 
-    x = 1
-    y = 2
+    a = 1
+    b = 2
 
-    print(f"{x:d} + {y:d} = {add(x, y):d}")
+    print(f"{a:d} + {b:d} = {add(a, b):d}")
