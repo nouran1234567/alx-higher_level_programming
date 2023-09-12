@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# function returns tuple with length of string & first character
+# function returns tuple with size of string & 1st char
 
 def multiple_returns(sentence):
     size = len(sentence)
