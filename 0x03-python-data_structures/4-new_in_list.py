@@ -7,4 +7,5 @@ def new_in_list(my_list, idx, element):
         return my_list
     coli = [x for x in my_list]
     coli[idx] = element
+
     return coli
