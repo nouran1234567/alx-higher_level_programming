@@ -7,5 +7,4 @@ def multiple_returns(sentence):
     first_letter = sentence[0] if size > 0 else "None"
     own_tup = size, first_letter
 
-    return(own_tup)
-
+    return (own_tup)
