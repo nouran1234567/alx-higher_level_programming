@@ -26,8 +26,8 @@ void print_python_bytes(PyObject *p)
 
 	PyBytes_AsStringAndSize(p, &try_str, &sz);
 
-	printf("  sz: %li\n", sz);
-	printf("  try string: %s\n", try_str);
+	printf("  size: %li\n", sz);
+	printf("  trying string: %s\n", try_str);
 	if (sz < 10)
 		printf("  first %li bytes:", sz + 1);
 	else
