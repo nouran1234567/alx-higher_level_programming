@@ -2,6 +2,7 @@
 #include <object.h>
 #include <listobject.h>
 #include <bytesobject.h>
+#include <stdio.h>
 
 /**
  * print_python_bytes - Prints info of  bytes
