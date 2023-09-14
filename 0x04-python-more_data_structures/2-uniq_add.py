@@ -6,6 +6,6 @@ def uniq_add(my_list=[]):
     own_list = set(my_list)
     z = 0
     for y in own_list:
-        num += y
+        z += y
 
     return (z)
