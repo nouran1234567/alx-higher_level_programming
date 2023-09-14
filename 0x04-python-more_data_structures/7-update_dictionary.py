@@ -2,7 +2,7 @@
 
 # function that replaces or adds key/value in a dictionary
 
-def update_dictionary(my_dict, key, value):
-    my_dict[key] = value
+def update_dictionary(own_dic, key, value):
+    own_dic[key] = value
 
-    return my_dict
+    return own_dic
