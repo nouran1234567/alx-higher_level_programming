@@ -1,3 +1,5 @@
 #!/usr/bin/python3
-import python_for_me
 
+# program that prints #pythoniscool
+
+import python_for_me
