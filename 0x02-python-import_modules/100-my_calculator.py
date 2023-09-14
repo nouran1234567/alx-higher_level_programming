@@ -3,26 +3,26 @@
 # program that imports functions from file and handles basic operations
 
 if __name__ == "__main__":
-    from sys import argv
+    import sys
     from calculator_1 import add, sub, mul, div
-    argc = len(argv)
-    if argc != 4:
-        print('Usage: {} <a> <operator> <b>'.format(argv[0]))
+    argv = sys.argv[1:]
+    argv_count = len(argv)
+    operators = ["+", "-", "*", "/"]
+    if sys.argv[2] not in operators: argv_count != 3:
+        print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
-    ops = {
-        '+': add,
-        '-': sub,
-        '*': mul,
-        '/': div
-    }
-    if argv[2] in ops:
-        x = int(argv[1])
-        y = int(argv[3])
-        op = ops[argv[2]]
-        result = op(x, y)
-        print('{:d} {:s} {:d} = {:d}'.format(x, argv[2], y, result))
+    elif argv_count != 3:
+        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
+        exit(1)
     else:
-        print('Unknown operator. Available operators: +, -, * and /')
-        exit(1)
-    exit(0)
+        a = int(sys.argv[1])
+        b = int(sys.argv[3])
+        if sys.argv[2] == "+":
+            print("{:d} + {:d} = {:d}".format(a, b, add(a, b)))
+        elif sys.argv[2] == "-":
+            print("{:d} - {:d} = {:d}".format(a, b, sub(a, b)))
+        elif sys.argv[2] == "*":
+            print("{:d} * {:d} = {:d}".format(a, b, mul(a, b)))
+        elif sys.argv[2] == "/":
+            print("{:d} / {:d} = {:d}".format(a, b, div(a, b)))
 
