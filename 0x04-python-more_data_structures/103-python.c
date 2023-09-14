@@ -13,9 +13,10 @@
 
 void print_python_bytes(PyObject *p)
 {
-	long int sz;
-	int x 
-	char *try_str = NULL;
+	char *str;
+	long int sz; 
+	long int lmt;
+	long int x
 
 	printf("[.] bytes object info\n");
 	if (!PyBytes_Check(p))
@@ -24,35 +25,54 @@ void print_python_bytes(PyObject *p)
 		return;
 	}
 
-	PyBytes_AsStringAndSize(p, &try_str, &sz);
+	sz = ((PyVarObject *)(p))->ob_size;
+	str = ((PyBytesObject *)p)->ob_sval;
 
-	printf("  size: %li\n", sz);
-	printf("  trying string: %s\n", try_str);
-	if (sz < 10)
-		printf("  first %li bytes:", sz + 1);
+	printf("  size: %ld\n", sz);
+	printf("  trying string: %s\n", str);
+
+	if (sz >= 10)
+		lmt = 10;
 	else
-		printf("  first 10 bytes:");
-	for (x = 0; x <= sz && x < 10; x++)
-		printf(" %02hhx", try_str[x]);
+		lmt = sz + 1;
+
+	printf("  first %ld bytes:", lmt);
+
+	for (x = 0; x < lmt; x++)
+		if (str[x] >= 0)
+			printf(" %02x", str[x]);
+		else
+			printf(" %02x", 256 + str[x]);
+
 	printf("\n");
 }
 
+/**
+ * print_python_list - Prints info of  list
+ *
+ * @p: Object
+ *
+ * Return: none
+ */
+
 void print_python_list(PyObject *p)
 {
-        long int sz = PyList_Size(p);
-        int x;
-        PyListObject *list = (PyListObject *)p;
-        const char *ty;
+	long int sz, x;
+	PyListObject *list;
+	PyObject *obj;
 
-        printf("[*] Python list info\n");
-        printf("[*] Size of the Python List = %li\n", sz);
-        printf("[*] Allocated = %li\n", list->allocated);
-        for (x = 0; x < sz; x++)
-        {
-                type = (list->ob_item[x])->ob_type->tp_name;
-		printf("Element %i: %s\n", x, ty);
-                if (!strcmp(ty, "bytes"))
-                        print_python_bytes(list->ob_item[x]);
-        }
-}
+	sz = ((PyVarObject *)(p))->ob_size;
+	list = (PyListObject *)p;
+
+	printf("[*] Python list info\n");
+	printf("[*] Size of the Python List = %ld\n", sz);
+	printf("[*] Allocated = %ld\n", list->allocated);
+
+	for (x = 0; x < sz; x++)
+	{
+		obj = ((PyListObject *)p)->ob_item[x];
+		printf("Element %ld: %s\n", i, ((obj)->ob_type)->tp_name);
+		if (PyBytes_Check(obj))
+			print_python_bytes(obj);
+	}
 
