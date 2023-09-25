@@ -2,9 +2,9 @@
 
 # function that prints an integer with "{:d}".format()
 
-def safe_print_integer(value):
+def safe_print_integer(vlu):
     try:
-        print("{:d}".format(value))
+        print("{:d}".format(vlu))
         return (True)
     except (TypeError, ValueError):
 

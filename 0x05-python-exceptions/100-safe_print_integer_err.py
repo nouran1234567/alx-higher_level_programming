@@ -5,9 +5,9 @@
 import sys
 
 
-def safe_print_integer_err(value):
+def safe_print_integer_err(vlu):
     try:
-        print("{:d}".format(value))
+        print("{:d}".format(vlu))
         return (True)
     except (TypeError, ValueError):
         print("Exception: {}".format(sys.exc_info()[1]), file=sys.stderr)
