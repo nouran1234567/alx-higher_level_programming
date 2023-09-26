@@ -3,5 +3,5 @@
 # Write an empty class Square that defines a square
 
 class Square:
-    """Define a Square"""
+    """Define a Square."""
     pass
